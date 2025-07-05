@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <script>
+        let product = {
+            name : "T-Shirt",
+            brand : "engin",
+            Price : 45,
+            rating: {
+                stars: 4.5,
+                noOfReview: 575,
+            },
+        }
+    //     console.log(typeof product);
+    //     console.log(product);
+    //     let str = JSON.stringify(product);// Convert object to JSON string
+    //     console.log(typeof str);// Check the type of the string
+    //     console.log(str);
+        
+
+    //     let newProduct = JSON.parse(str);// Convert JSON string back to object
+    //     console.log(typeof newProduct);
+    //     console.log(newProduct);
+
+    //     localStorage.setItem("product" ,JSON.stringify(product));
+    //    let items=  localStorage.getItem("product", )
+    //    console.log(items);
+    //    localStorage.removeItem("price");
+
+        // localStorage.removeItem("name");
+        localStorage.setItem("name", "engin");
+        localStorage.removeItem("name");
+        localStorage.clear(); // Clear all items in localStorage
+        
+          </script>
+</body>
+</html>

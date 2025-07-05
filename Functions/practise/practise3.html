@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practise 3</title>
+</head>
+<body>
+    <button onclick="convertionCtoF() ">Convert Celsius to Fahrenheit</button>
+    <script>
+        function convertionCtoF(){
+            let Celsius = parseFloat(prompt("enter the temperature in celsius;"));
+            if(isNaN(Celsius)){
+                alert("please enter a valid number");
+            }else{
+                let Fahrenheit = (Celsius * 9/5) + 32; // Formula to convert Celsius to Fahrenheit
+                alert("The temperature in Fahrenheit is " + Fahrenheit.toFixed(2) + "°F");// toFixed(2) is used to round the result to 2 decimal places
+             }
+        }
+    </script>
+</body>
+</html>

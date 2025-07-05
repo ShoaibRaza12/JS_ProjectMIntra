@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 40px 20px 20px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #222;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+    align-self: center;
+    margin-left: 0;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+    gap: 30px; /* Increased gap for better margin between input, date, and button */
+}
+
+#todoInput {
+    width: 250px;
+    padding: 14px 16px;
+    font-size: 18px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#todoDate {
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#todoInput:focus, #todoDate:focus {
+    border-color: #5c9ded;
+    outline: none;
+}
+
+#addTodoButton {
+    padding: 14px 28px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+}
+
+#addTodoButton:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0,86,179,0.4);
+}
+
+.todo-Container > div {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 16px 24px;
+    margin: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.todo-Container > div:hover {
+    background-color: #f0f8ff;
+}
+
+.todo-Container > div span:first-child {
+    flex-grow: 1;
+    font-weight: 600;
+    color: #222;
+}
+
+.todo-Container > div span:nth-child(2) {
+    margin-left: 60px; /* Further increased margin for better separation from button */
+    margin-right: 20px; /* Added margin-right for spacing */
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 100px;
+    text-align: right;
+}
+.todo-Container > div button {
+    margin-left: 20px; /* Added margin-left for spacing from date */
+}
+
+.todo-Container > div button {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    background-clip: padding-box;
+}
+
+.todo-Container > div button:hover {
+    background-color: #a71d2a;
+    box-shadow: 0 4px 12px rgba(167,29,42,0.4);
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .input-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #todoInput, #todoDate, #addTodoButton {
+        width: 100%;
+        margin: 0;
+    }
+
+    .todo-Container > div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .todo-Container > div span:nth-child(2) {
+        margin-left: 0;
+        margin-top: 8px;
+        text-align: left;
+        min-width: auto;
+    }
+}

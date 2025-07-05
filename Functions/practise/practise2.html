@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practise 2</title>
+</head>
+<body>
+    <button onclick="checkNumber()">Check & return larger of 2 Numbers</button>
+    <script>
+    function checkNumber(){
+        let num1 = parseFloat(prompt("enter the 1st number;"));
+        let num2 = parseFloat(prompt("enter the 2nd numebr;"));
+        if(isNaN(num1) || isNaN(num2)){
+            alert("please enter valid number");
+        }else {
+            if(num1 > num2){
+                alert("the larger number is " + num1);
+            }else if(num2 > num1){
+                alert("the larger number is " + num2);
+            }
+        }
+
+    }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TODO App</title>
+    <!-- Import Google font 'Poppins' for modern and clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <!-- Link to external CSS file for styling the TODO app -->
+    <link rel="stylesheet" href="todo.css" />
+</head>
+<body>
+    <!-- Main heading of the TODO app -->
+    <h1>ToDO App</h1>
+    <!-- Container for input fields and add button -->
+    <div class="input-container">
+        <!-- Text input for entering new task description -->
+        <input type="text" id="todoInput" placeholder="Add a new task" aria-label="Add a new task" />
+        <!-- Date input for selecting due date of the task -->
+        <input type="date" id="todoDate" aria-label="Select task date" />
+        <!-- Button to add the new task, triggers addTodo() function on click -->
+        <button id="addTodoButton" aria-label="Add Task" onclick="addTodo();">Add Task</button>
+    </div>
+    <!-- Container where todo items will be dynamically inserted by JavaScript -->
+    <div class="todo-Container">
+    </div>
+    <!-- Link to external JavaScript file containing logic for adding and displaying todos -->
+    <script src="todo.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Time</title>
+</head>
+<body>
+    <script>
+
+        let alarm = function(){
+            console.log(`good afternoon ${new Date()}`);
+        }
+
+        setTimeout(alarm, 5000);
+
+        // let timerId = setTimeout(
+        //     ()=>{
+        //         console.log("good afternoon");
+        //     },2000
+        
+        // )
+        // console.log(timerId);
+        // clearTimeout(timerId);
+
+        setInterval(alarm, 2000);
+    </script>
+    
+</body>
+</html>

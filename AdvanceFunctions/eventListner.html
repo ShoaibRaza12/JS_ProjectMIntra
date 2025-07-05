@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listner</title>
+</head>
+<body>
+
+    <button id="my-button">Click me</button>
+    <script>
+
+      let button = document.querySelector("#my-button");
+      console.log(button);
+      button.addEventListener("click", event => alert("Button was clicked!"));
+      let date = event => console.log(new Date());
+      button.addEventListener("click", date);
+    </script>
+</body>
+</html>

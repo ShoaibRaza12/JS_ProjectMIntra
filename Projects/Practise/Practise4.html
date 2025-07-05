@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practise 4</title>
+</head>
+<body>
+    <h1>Greeting Project</h1>
+    <h3 class="show-msg">Greeting here.</h3>
+    <h3 class="current-time"></h3>
+
+    <script>
+       const hour = new Date().getHours();
+    let greeting;
+
+        if (hour >= 5 && hour <= 11) {
+        greeting = "Good Morning";
+        } else if (hour >= 12 && hour <= 17) {
+        greeting = "Good Afternoon";
+        } else if (hour >= 18 && hour <= 23) {
+        greeting = "Good Evening";
+        } else {
+        greeting = "Good Night";
+        }
+
+        document.querySelector(".show-msg").innerText = greeting + ",Shoaib!";
+        document.querySelector(".current-time").innerText = `Current Time: ${new Date().toLocaleTimeString()}`;
+    </script>
+</body>
+</html>

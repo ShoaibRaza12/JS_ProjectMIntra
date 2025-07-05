@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practise 4</title>
+</head>
+<body>
+    
+    <script>
+        let product = {
+            name : 'jeans',
+            size : 'medium',
+            fit: 'slim',
+            price: 49.99,
+        };
+        console.log(product.price)
+        let copyProduct = product; // Shallow copy
+        copyProduct.price = 39.99; // Modifying the copy
+        console.log(product.price); // 39.99, original object is affected
+
+    </script>
+</body>
+</html>

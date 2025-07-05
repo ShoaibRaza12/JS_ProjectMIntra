@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practise 1</title>
+</head>
+<body>
+    <button onclick="checkEvenOdd()">Check Even or Odd</button>
+    <script>
+        function checkEvenOdd(){
+            let number = parseInt(prompt("enter a number;'"))//parseInt converts string to integer
+            //parseFloat can be used to convert string to float
+            //prompt is used to take input from user
+            if(isNaN(number)){//isNaN checks if the value is not a number
+                //isNaN is a function that checks if the value is not a number
+                alert("please enter a valid number");
+            }else{
+                if(number % 2 === 0){
+                    alert("The number " + number + " is even.");
+                }else{
+                    alert("The number " + number + " is odd.");
+                }
+            }
+        }
+
+    </script>
+
+</body>
+</html>

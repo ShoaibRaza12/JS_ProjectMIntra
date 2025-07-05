@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="add-to-bag" onclick="
+    cart_quantity = cart_quantity + 1;
+    console.log(cart_quantity);
+    document.querySelector('#cart-summary').innerHTML = `Your Bag has ${cart_quantity} items`;  
+    "> add to bag</button>
+    <button class="move-to-wish" onclick="
+    cart_quantity =cart_quantity - 1;
+    console.log(cart_quantity);
+    document.querySelector('#cart-summary').innerHTML = `Your Bag has ${cart_quantity} items`;
+    ">Move to wishlist</button>
+    <button class="add-items" onclick="
+    cart_quantity = cart_quantity + 2;
+    console.log(cart_quantity);
+    document.querySelector('#cart-summary').innerHTML = `Your Bag has ${cart_quantity} items`;
+    ">Add 1+1 sale item </button>
+
+    <h1 id="cart-summary"></h1>
+</body>
+
+<script>
+    let cart_quantity = 0;
+    document.querySelector("#cart-summary").innerHTML = `Your Bag has ${cart_quantity} items`;
+
+</script>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bat-Ball Project with Images</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://cdn.pixabay.com/photo/2017/08/30/12/45/cricket-2699636_1280.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #004080;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 3rem;
+            color: #004080;
+            text-shadow: 1px 1px 2px #a0c4ff;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            background-color: rgba(0, 122, 204, 0.8);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 122, 204, 0.4);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        button:hover {
+            background-color: rgba(0, 95, 153, 0.8);
+            box-shadow: 0 6px 8px rgba(0, 95, 153, 0.6);
+        }
+
+        button:active {
+            background-color: rgba(0, 77, 128, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 77, 128, 0.8);
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+    </style>
+    <style>
+        /* Modal container */
+        #resultModal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh; /* Use viewport height for vertical centering */
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5); /* Black with opacity */
+            display: flex;
+            align-items: flex-start; /* Align content at the top */
+            justify-content: center;
+            padding: 40px 0 0 0; /* Add top padding to position modal */
+            box-sizing: border-box;
+        }
+
+        /* Modal content box */
+        #resultModalContent {
+            background-color: #fefefe;
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 100%;
+            text-align: left; /* Align text left for better readability */
+            font-size: 1.2rem;
+            color: #004080;
+            font-weight: 600;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        /* Close button */
+        #resultModalClose {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: #004080;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            margin: 0;
+            line-height: 1;
+        }
+
+        #resultModalClose:hover {
+            color: #00264d;
+        }
+    </style>
+    <style>
+        /* Congratulation message styling */
+        #congratsMessage {
+            margin-top: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bat Ball Game</h1>
+
+    <div class="button-container">
+
+        <button onclick="  
+           generateComputerChoice();
+           let resultmsg = getResult('Bat', computerChoice); 
+           showResults('Bat', computerChoice, resultmsg)
+           
+        ">
+            Bat
+        </button>
+        <button onclick="
+              generateComputerChoice();
+            resultmsg = getResult('Ball', computerChoice)
+            showResults('Ball', computerChoice, resultmsg)
+        ">
+            Ball
+        </button>
+        <button onclick="
+          generateComputerChoice();// Generate a random choice for the computer
+             resultmsg = getResult('Stump', computerChoice)// Determine the result of the game
+            // Show the results in an alert
+            showResults('Stump', computerChoice, resultmsg) // Show the results in an alert
+        ">
+            Stump
+        </button>
+
+        <!-- Modal for showing results -->
+        <div id="resultModal">
+            <div id="resultModalContent">
+                <button id="resultModalClose" aria-label="Close">&times;</button>
+                <div id="resultMessage"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Congratulation message -->
+    <div id="congratsMessage"></div>
+
+    <div class="game-info">
+    <h3 id="user-move"></h3>
+    <h3 id="C-move"></h3>
+    <h3 id="Result"></h3>
+    <h3 id="Score"></h3>
+    </div>
+    
+
+        <script>
+          
+          
+
+            let computerChoice;
+            let RandomNumber;
+            // Function to generate a random choice for the computer
+            // and determine the result of the game
+              let score ={
+                win : 0,
+                lose : 0,
+                tie : 0,
+            };
+            function generateComputerChoice() {
+                RandomNumber = Math.random() * 3;
+                if (RandomNumber > 0 && RandomNumber <= 1) {
+                    computerChoice = 'Bat';
+                } else if (RandomNumber > 1 && RandomNumber <= 2) {
+                    computerChoice = 'Ball';
+                } else if (RandomNumber > 2 && RandomNumber <= 3) {
+                    computerChoice = 'Stump';
+                }
+            }
+            // Function to determine the result of the game based on user and computer choices
+            function getResult(userMove, computerMove) {
+                let resultmsg;   
+                if (userMove === 'Bat') {
+                    if (computerMove === 'Ball') {
+                        score.win++;
+                        return  'User win!';
+                       
+                    } else if (computerMove === 'Bat') {
+                        score.tie++;
+                        return 'It\'s a tie!';
+                        
+                    } else if (computerMove === 'Stump') {
+                        score.lose++;
+                        return 'Computer wins!';
+                        
+                    } else {
+                        return 'Invalid choice!';
+                    }
+                }else if(userMove === 'Ball') {
+                    if (computerMove === 'Ball') {
+                        score.tie++;
+                        return 'It\'s a tie!';
+                        
+                    } else if (computerMove === 'Bat') {
+                        score.lose++;
+                        return 'Computer wins!';
+                        
+                    } else if (computerMove === 'Stump') {
+                        score.win++;
+                        return 'User win!';
+                        
+                    } else {
+                        return 'Invalid choice!';
+                    }
+                } else if(userMove === 'Stump') {
+                    if (computerMove === 'Ball') {
+                        score.lose++;
+                        return 'Computer wins!';
+                        
+                    } else if (computerMove === 'Bat') {
+                        score.win++;
+                        return 'User win!';
+                        
+                    } else if (computerMove === 'Stump') {
+                        score.tie++;
+                        return 'It\'s a tie!';
+                        
+                    } else {
+                        return 'Invalid choice!';
+                    }
+                }
+            }
+
+            function showResults(userMove, computerMove ,resultmsg) {
+                document.querySelector('.game-info').style.display = 'block'; // Show the game info section
+                document.querySelector('.game-info').style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // Add background color to game info
+                document.querySelector('.game-info').style.padding = '20px'; // Add padding to game info
+                document.querySelector('.game-info').style.marginTop = '20px'; // Add margin to game info
+                document.querySelector('.game-info').style.border = '2px solid #004080';
+                document.querySelector('.game-info').style.borderRadius = '10px'; // Add border radius to game info
+                document.querySelector('.game-info').style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'; // Add box shadow to game info
+                document.querySelector('#user-move').style.color = '#004080'; // Change color of user move text
+                document.querySelector('#C-move').style.color = '#004080'; // Change color  of computer move text
+                document.querySelector('#Result').style.color = '#004080'; // Change color of result text
+                document.querySelector('#Score').style.color = '#004080'; // Change color of score text     
+                // Update the game info section with user move, computer move, result, and score
+                document.querySelector('#user-move').style.fontSize = '1.5rem'; // Increase font size of user move text
+                
+                document.querySelector('#user-move').textContent = `You chose: ${userMove}`; // Update user move text
+                document.querySelector('#C-move').textContent = `Computer chose: ${computerMove}`; // Update computer move text
+                document.querySelector('#Result').textContent = `Result: ${resultmsg}`; // Update result text
+                document.querySelector('#Score').textContent = `Score: ${score.win} Wins, ${score.lose} Losses, ${score.tie} Ties`; // Update score text    
+
+                // document.querySelector('#user-move').innerHTML = `User Move: ${userMove}`;
+                // document.querySelector('#C-move').innerHTML = `Computer Move: ${computerMove}`;
+                // document.querySelector('#Result').innerHTML = `Result: ${resultmsg}`;
+                // document.querySelector('#Score').innerHTML = `Score: ${score.win} Wins, ${score.lose} Losses, ${score.tie} Ties`;
+                
+                console.log(score);
+                // Show result in custom modal instead of alert
+                const modal = document.getElementById('resultModal');
+                const messageDiv = document.getElementById('resultMessage');
+                const congratsDiv = document.getElementById('congratsMessage');
+
+                messageDiv.textContent = `You have Chosen ${userMove} : computerChoice: ${computerMove} and ${resultmsg}
+                
+                Won = ${score.win}
+                Lost = ${score.lose}
+                Tie = ${score.tie}
+                `;
+                modal.style.display = 'flex';
+
+                // Set congratulation message based on result
+                if (resultmsg.includes('User win')) {
+                    congratsDiv.textContent = 'Congratulations! You won the game!';
+                    congratsDiv.style.color = '#155724';
+                    congratsDiv.style.backgroundColor = '#d4edda';
+                    congratsDiv.style.borderColor = '#c3e6cb';
+                    congratsDiv.style.display = 'block';
+                } else if (resultmsg.includes('Computer wins')) {
+                    congratsDiv.textContent = 'Better luck next time! Computer won the game.';
+                    congratsDiv.style.color = '#721c24';
+                    congratsDiv.style.backgroundColor = '#f8d7da';
+                    congratsDiv.style.borderColor = '#f5c6cb';
+                    congratsDiv.style.display = 'block';
+                } else if (resultmsg.includes('tie')) {
+                    congratsDiv.textContent = 'It\'s a tie! Try again.';
+                    congratsDiv.style.color = '#856404';
+                    congratsDiv.style.backgroundColor = '#fff3cd';
+                    congratsDiv.style.borderColor = '#ffeeba';
+                    congratsDiv.style.display = 'block';
+                } else {
+                    congratsDiv.style.display = 'none';
+                }
+            }
+
+            // Close modal when clicking close button
+            document.getElementById('resultModalClose').addEventListener('click', () => {
+                document.getElementById('resultModal').style.display = 'none';
+            });
+
+            // Optional: Close modal when clicking outside the modal content
+            window.addEventListener('click', (event) => {
+                const modal = document.getElementById('resultModal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        </script>
+    </div>
+</body>
+
+</html>

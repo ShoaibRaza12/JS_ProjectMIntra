@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practise 5</title>
+</head>
+<body>
+    <button class="Check-btn-pressed">Button Click 0</button>
+
+    <script>
+        function countClicks(){
+            let count = 0;
+            return function() {
+                count++;
+                console.log(`Button clicked ${count} times`);
+                document.querySelector(".Check-btn-pressed").innerText = `Button clicked ${count} times`;
+            }          
+        }
+    document.querySelector(".Check-btn-pressed").addEventListener("click", countClicks());
+     </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        let product = {
+            name : "Iphone",
+            model : "!2",
+            rating: 4.5,
+            Health : "good",
+            displayRating : function(){
+                console.log(`Rating is ${this.rating}`);
+            }
+        };
+
+        //object destructuring
+        let {model,name,rating,Health} =product; // destructuring the object
+        console.log(model);
+        console.log(name);
+        console.log(rating); 
+        console.log(Health);
+
+        
+        console.log(product);
+        console.log(product.model);
+        console.log(product.displayRating())
+    </script>
+</body>
+</html>
